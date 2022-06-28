@@ -6,7 +6,7 @@ import { images } from "../data";
 import Grid from "../components/Grid";
 import Underline from "../components/Underline";
 import Thumb from "../components/Thumb";
-import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 import CategorieHeader from "../components/CategorieHeader";
 import { useGlobalContext } from "../context";
 import { FaBars } from "react-icons/fa";
@@ -26,7 +26,7 @@ const Categories = () => {
     <button className="sidebar-toggle" onClick={openSidebar}>
         <FaBars />
       </button>
-      <Navbar />
+      <Sidebar />
       <Content>
         <CategorieHeader categorie={categories} />
         <Underline />

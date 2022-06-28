@@ -3,15 +3,19 @@ import { Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from "../../context";
 // Styles
-import { Header, Content, LinkWrapper, SocialWrapper, LinkContent } from "./Navbar.styles";
+import { Header, Content, LinkWrapper, SocialWrapper, LinkContent } from "./Sidebar.styles";
 // Components
 import Logo from "../Logo";
 import SocialMedia from "../SocialMedia";
 // Data
 import { categories } from "../../data";
 
-const Navbar = () => {
-  const { isSidebarOpen, closeSidebar, closeSidebarIfClicked, windowSize } = useGlobalContext();
+const Sidebar = () => {
+  const { isSidebarOpen, closeSidebar, closeSidebarIfClicked, dimensions, openSidebar } = useGlobalContext();
+
+  if (dimensions.width > 600 ) {
+    openSidebar();
+  }
 
   return (
     <aside className={`${isSidebarOpen ? "sidebar show-sidebar" : "sidebar"}`}>
@@ -19,7 +23,7 @@ const Navbar = () => {
         <Link to="/" style={{ textDecoration: "none" }}>
           <Logo width="100px" />
         </Link>
-        <button className={`${(windowSize < 600) ? "close-btn show-close-btn" : "close-btn"}`}  onClick={closeSidebar}>
+        <button className={`${(dimensions.width < 600) ? "close-btn show-close-btn" : "close-btn"}`}  onClick={closeSidebar}>
           <FaTimes />
         </button>
       </Header>
@@ -45,4 +49,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Sidebar;
